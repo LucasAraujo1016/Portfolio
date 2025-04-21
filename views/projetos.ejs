@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Projetos - Lucas Araujo</title>
+    <link rel="stylesheet" href="/statics/portfólio.css">
+</head>
+    <body>
+        <%- include('partials/header') %>
+
+        <main>
+            <section class="projetos" id="projetos">
+                <h1>Projetos</h1>
+                <p>Nesta seção, você encontrará projetos que desenvolvi ao longo da minha trajetória. Cada projeto reflete minha paixão por inovação e aprendizado, abrangendo diversas áreas e tecnologias. Sinta-se à vontade para explorar e conhecer mais sobre cada um deles!</p>
+
+                <% projetos.forEach(proj => { %>
+                    <div class="api-1">
+                        <h2><%= proj.titulo %></h5>
+                        <p><%= proj.descricao %></p>
+                        <img class="img-fluid api1-img" src="/statics/imagens/<%= proj.imagem %>" alt="<%= proj.titulo %>">
+                        <button type="button" class="btn btn-primary btn-lg github-api1"
+                            onclick="window.open('<%= proj.link %>', '_blank')">GitHub do projeto</button>
+                    </div>
+                <% }) %>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+    </body>
+</html>

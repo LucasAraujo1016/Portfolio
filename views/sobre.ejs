@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sobre - Lucas Araujo</title>
+    <link rel="stylesheet" href="/statics/portfólio.css">
+</head>
+    <body>
+        <%- include('partials/header') %>
+
+        <main>
+            <section class="sobre" id="sobre">
+                <div class="foto">
+                    <img class="img-fluid minha-foto" src="/statics/imagens/minha_foto.jpg" alt="foto">
+                </div>
+                <div class="card-sobre">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 style="text-align: center;"><%= nome %></h2>
+                            <h3 style="text-align: center;"><%= cargo %></h3>
+                            <h5 class="card-title">Olá, muito prazer!</h5>
+                            <p class="card-text">Atualmente, estou estudando Desenvolvimento de Software Multiplataforma na Fatec - SJC. Busco sempre aprender novas tecnologias e aprimorar minhas habilidades. Além da minha paixão por programação, sou um amante de jogos e de RPG de mesa.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="copetencias">
+                <h1>Competências técnicas</h1>
+                <div class="copetencias1">
+                    <!-- Frontend -->
+                    <div class="front_back">
+                        <h4>Frontend</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 1rem;">
+                            <% competencias.frontEnd.forEach(function(tecnologia) { %>
+                                <div class="icons">
+                                    <img src="/statics/imagens/<%= tecnologia.toLowerCase() %>.png" alt="<%= tecnologia %>">
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+            
+                    <!-- Backend -->
+                    <div class="front_back">
+                        <h4>Backend</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 1rem;">
+                            <% competencias.backEnd.forEach(function(tecnologia) { %>
+                                <div class="icons">
+                                    <img src="/statics/imagens/<%= tecnologia.toLowerCase() %>.png" alt="<%= tecnologia %>">
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+    </body>
+</html>

@@ -1,0 +1,268 @@
+*{
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: #0E131F;
+}
+
+header {
+    display: flex;
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    z-index: 2;
+    background-color: #353435;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: 5%;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center ;
+    padding: 2%;
+    background-color: #0E131F;
+ }
+
+p, span {
+    color: #e2e2e2;
+    font-family: "Raleway", sans-serif;
+}
+
+h1, h4, h5 {
+    font-family: "Raleway", sans-serif;
+    color: #832232;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+}
+
+.navbar a {
+    font-size: larger;
+    text-decoration: none;
+    font-family: "Rubik", sans-serif;
+    color: #e2e2e2;
+}
+
+.navbar a.active {
+    font-weight: bold; 
+    color: #fff; 
+}
+
+.sobre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75%;
+    margin-bottom: 5%; 
+    gap: 2%;
+    background-color: #0E131F;
+}
+
+.foto {
+    width: 30vw;
+}
+
+.minha-foto {
+    width: 100%;
+    height: 50vh;
+    border-radius: 100%;
+    border: solid;
+    border-color: #832232;
+}
+
+.card {
+    width: 50vw;
+    height: auto;
+    border-radius: 20px;
+    border: solid;
+    border-color: #832232;
+    background-color: rgb(202, 198, 198);
+}
+
+.card-title, .card-text {
+    padding-left: 10px;
+    color: black;
+    font-family: "Rubik", sans-serif;
+}
+
+.copetencias {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #0E131F;
+
+}
+
+.copetencias1 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.front_back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25vw;
+    border: solid;
+    border-color: #832232;
+    border-radius: 1rem;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.icons > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.projetos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0E131F;
+}
+
+.projetos > p {
+    width: 50vw;
+}
+
+.api-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    color: #832232;  
+}
+
+.api-1 > p {
+    text-align: center;
+    width: 75vw;
+}
+
+.api1-img {
+    width: 45vw;
+    border: solid;
+    border-color: #832232;
+    border-radius: 1rem;
+}
+
+.github-api1 {
+    margin-top: 2%;
+    border-radius: 2rem;
+    width: 20vw;
+    height: 50px;
+    background-color: black;
+    border: solid;
+    font-size: large;
+    color: white;
+    border-color: white;
+}
+
+.github-api1:hover:hover {
+    background-color: black;
+    border-color: #832232;
+}
+
+.contato {
+    display: flex;
+    gap: 20px;
+}
+
+.contato > a img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.mensagem {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    header {
+        height: 7vh;
+        flex-wrap: wrap;
+    }
+
+    .navbar {
+        gap: 50px;
+        font-size: xx-large;
+    }
+
+    .sobre {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .minha-foto {
+        width: 50vw;
+        height: 30vh;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: 50%;
+    }
+
+    .foto {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .card-sobre {
+        justify-items: center;
+        }
+
+    .card {
+        width: 90%;
+    }
+
+    .copetencias1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .front_back {
+        width: 90%;
+    }
+
+}
