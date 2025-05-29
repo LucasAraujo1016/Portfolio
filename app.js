@@ -1,8 +1,25 @@
+const apiRoutes = require('./db');
 const express = require('express');
 const path = require('path');
+const mysql = require('mysql2');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json());
+app.use('/api', apiRoutes);
 const port = 3000;
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'fatec',
+    database: 'portfolio'
+});
+
+db.connect(err => {
+    if (err) throw err;
+    console.log('✅ Conexão com o banco de dados estabelecida com sucesso!');
+});
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -16,10 +33,9 @@ const contatos = {
 };
 
 const competencias = {
-    frontEnd: ['HTML', 'CSS', 'Tailwind','JavaScript', 'React', 'TypeScript'],
+    frontEnd: ['HTML', 'CSS', 'Tailwind', 'JavaScript', 'React', 'TypeScript'],
     backEnd: ['Python', 'Node.js', 'Flask', 'MySQL']
 };
-
 
 app.get('/', (req, res) => res.redirect('/sobre'));
 
