@@ -23,7 +23,7 @@
                             <div class="tecnologias">
                                 <strong>Tecnologias utilizadas:</strong>
                                 <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 1rem;">
-                                    <% proj.tecnologias.forEach(function(tec) { %>
+                                    <% proj.tecnologias.forEach(function(tec).toLowerCase() { %>
                                         <div class="icons">
                                             <img src="/statics/imagens/<%= tec.toLowerCase().replace('.', '').replace('#', 'sharp').replace(' ', '') %>.png" alt="<%= tec %>">
                                         </div>
