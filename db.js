@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql2');
+const fs = require('fs');
+const path = require('path');
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'fatec',
-    database: 'portfolio'
-});
+const projetosPath = path.join(__dirname, 'projetos.json');
+const competenciasPath = path.join(__dirname, 'competencias.json');
+const contatosPath = path.join(__dirname, 'contatos.json');
+
+function readJson(filePath) {
+    if (!fs.existsSync(filePath)) return [];
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+}
+
+function writeJson(filePath, data) {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+}
 
 router.get('/usuarios', (req, res) => {
     db.query('SELECT * FROM usuario', (err, results) => {
@@ -40,161 +47,117 @@ router.delete('/usuarios/:id', (req, res) => {
 });
 
 router.get('/contatos', (req, res) => {
-    db.query('SELECT * FROM contatos', (err, results) => {
-        if (err) return res.status(500).json({ erro: err });
-        res.json(results);
-    });
+    const contatos = readJson(contatosPath);
+    res.json(contatos);
 });
 
-router.get('/contatos/usuario/:usu_id', (req, res) => {
-    db.query('SELECT * FROM contatos WHERE usu_id = ?', [req.params.usu_id], (err, results) => {
-        if (err) return res.status(500).json({ erro: err });
-        res.json(results);
-    });
+router.get('/contatos/:id', (req, res) => {
+    const contatos = readJson(contatosPath);
+    const contato = contatos.find(c => c.id == req.params.id);
+    if (!contato) return res.status(404).json({ erro: 'Contato não encontrado' });
+    res.json(contato);
 });
 
 router.post('/contatos', (req, res) => {
-    const { cont_email, cont_telefone, cont_linkedin, cont_github, usu_id } = req.body;
-
-    if (!usu_id) {
-        return res.status(400).json({ erro: 'Usuário ID é obrigatório' });
-    }
-
-    db.query(
-        'INSERT INTO contatos (cont_email, cont_telefone, cont_linkedin, cont_github, usu_id) VALUES (?, ?, ?, ?, ?)',
-        [cont_email, cont_telefone, cont_linkedin, cont_github, usu_id],
-        (err, result) => {
-            if (err) return res.status(500).json({ erro: err });
-            res.status(201).json({ mensagem: 'Contato inserido', id: result.insertId });
-        }
-    );
+    const contatos = readJson(contatosPath);
+    const novoContato = { id: Date.now(), ...req.body };
+    contatos.push(novoContato);
+    writeJson(contatosPath, contatos);
+    res.status(201).json(novoContato);
 });
 
 router.put('/contatos/:id', (req, res) => {
-    const { cont_email, cont_telefone, cont_linkedin, cont_github } = req.body;
-    db.query(
-        'UPDATE contatos SET cont_email = ?, cont_telefone = ?, cont_linkedin = ?, cont_github = ? WHERE cont_id = ?',
-        [cont_email, cont_telefone, cont_linkedin, cont_github, req.params.id],
-        (err) => {
-            if (err) return res.status(500).json({ erro: err });
-            res.json({ mensagem: 'Contato atualizado' });
-        }
-    );
+    const contatos = readJson(contatosPath);
+    const idx = contatos.findIndex(c => c.id == req.params.id);
+    if (idx === -1) return res.status(404).json({ erro: 'Contato não encontrado' });
+    contatos[idx] = { ...contatos[idx], ...req.body };
+    writeJson(contatosPath, contatos);
+    res.json(contatos[idx]);
 });
 
 router.delete('/contatos/:id', (req, res) => {
-    db.query('DELETE FROM contatos WHERE cont_id = ?', [req.params.id], (err) => {
-        if (err) return res.status(500).json({ erro: err });
-        res.json({ mensagem: 'Contato excluído' });
-    });
+    let contatos = readJson(contatosPath);
+    const idx = contatos.findIndex(c => c.id == req.params.id);
+    if (idx === -1) return res.status(404).json({ erro: 'Contato não encontrado' });
+    contatos.splice(idx, 1);
+    writeJson(contatosPath, contatos);
+    res.json({ mensagem: 'Contato excluído' });
 });
 
 router.get('/competencias', (req, res) => {
-    db.query('SELECT * FROM competencias', (err, results) => {
-        if (err) return res.status(500).json({ erro: err });
-        res.json(results);
-    });
+    const competencias = readJson(competenciasPath);
+    res.json(competencias);
 });
 
-router.get('/competencias/usuario/:usu_id', (req, res) => {
-    db.query('SELECT * FROM competencias WHERE usu_id = ?', [req.params.usu_id], (err, results) => {
-        if (err) return res.status(500).json({ erro: err });
-        res.json(results);
-    });
+router.get('/competencias/:id', (req, res) => {
+    const competencias = readJson(competenciasPath);
+    const competencia = competencias.find(c => c.id == req.params.id);
+    if (!competencia) return res.status(404).json({ erro: 'Competência não encontrada' });
+    res.json(competencia);
 });
 
 router.post('/competencias', (req, res) => {
-    const { comp_frontend, comp_backend, usu_id } = req.body;
-
-    if (!usu_id) {
-        return res.status(400).json({ erro: 'Usuário ID é obrigatório' });
-    }
-
-    db.query(
-        'INSERT INTO competencias (comp_frontend, comp_backend, usu_id) VALUES (?, ?, ?)',
-        [comp_frontend, comp_backend, usu_id],
-        (err, result) => {
-            if (err) return res.status(500).json({ erro: err });
-            res.status(201).json({ mensagem: 'Competência inserida', id: result.insertId });
-        }
-    );
+    const competencias = readJson(competenciasPath);
+    const novaCompetencia = { id: Date.now(), ...req.body };
+    competencias.push(novaCompetencia);
+    writeJson(competenciasPath, competencias);
+    res.status(201).json(novaCompetencia);
 });
 
 router.put('/competencias/:id', (req, res) => {
-    const { comp_frontend, comp_backend } = req.body;
-    db.query(
-        'UPDATE competencias SET comp_frontend = ?, comp_backend = ? WHERE comp_id = ?',
-        [comp_frontend, comp_backend, req.params.id],
-        (err) => {
-            if (err) return res.status(500).json({ erro: err });
-            res.json({ mensagem: 'Competência atualizada' });
-        }
-    );
+    const competencias = readJson(competenciasPath);
+    const idx = competencias.findIndex(c => c.id == req.params.id);
+    if (idx === -1) return res.status(404).json({ erro: 'Competência não encontrada' });
+    competencias[idx] = { ...competencias[idx], ...req.body };
+    writeJson(competenciasPath, competencias);
+    res.json(competencias[idx]);
 });
 
 router.delete('/competencias/:id', (req, res) => {
-    db.query('DELETE FROM competencias WHERE comp_id = ?', [req.params.id], (err) => {
-        if (err) return res.status(500).json({ erro: err });
-        res.json({ mensagem: 'Competência excluída' });
-    });
+    let competencias = readJson(competenciasPath);
+    const idx = competencias.findIndex(c => c.id == req.params.id);
+    if (idx === -1) return res.status(404).json({ erro: 'Competência não encontrada' });
+    competencias.splice(idx, 1);
+    writeJson(competenciasPath, competencias);
+    res.json({ mensagem: 'Competência excluída' });
 });
 
 router.get('/projetos', (req, res) => {
-    db.query('SELECT * FROM projetos', (err, results) => {
-        if (err) return res.status(500).json({ erro: err });
-        res.json(results);
-    });
+    const projetos = readJson(projetosPath);
+    res.json(projetos);
 });
 
-router.get('/projetos/usuario/:usu_id', (req, res) => {
-    db.query('SELECT * FROM projetos WHERE usu_id = ?', [req.params.usu_id], (err, results) => {
-        if (err) return res.status(500).json({ erro: err });
-        res.json(results);
-    });
-});
-
-router.get('/projetos/:usu_id/:pro_id', (req, res) => {
-    db.query('select * from projetos where usu_id = ? and pro_id = ?', [req.params.usu_id, req.params.pro_id], (err, results) => {
-        if (err) return res.status(500).json({ erro: err });
-        if (results.length === 0) return res.status(404).json({ erro: 'Projeto não encontrado' });
-        res.json(results);
-    });
+router.get('/projetos/:id', (req, res) => {
+    const projetos = readJson(projetosPath);
+    const projeto = projetos.find(p => p.id == req.params.id);
+    if (!projeto) return res.status(404).json({ erro: 'Projeto não encontrado' });
+    res.json(projeto);
 });
 
 router.post('/projetos', (req, res) => {
-    const { pro_titulo, pro_descricao, pro_imagem, pro_link, usu_id } = req.body;
-
-    if (!usu_id || !pro_titulo || !pro_descricao || !pro_imagem || !pro_link) {
-        return res.status(400).json({ erro: 'Todos os campos são obrigatórios' });
-    }
-
-    db.query(
-        'INSERT INTO projetos (pro_titulo, pro_descricao, pro_imagem, pro_link, usu_id) VALUES (?, ?, ?, ?, ?)',
-        [pro_titulo, pro_descricao, pro_imagem, pro_link, usu_id],
-        (err, result) => {
-            if (err) return res.status(500).json({ erro: err });
-            res.status(201).json({ mensagem: 'Projeto inserido', id: result.insertId });
-        }
-    );
+    const projetos = readJson(projetosPath);
+    const novoProjeto = { id: Date.now(), ...req.body };
+    projetos.push(novoProjeto);
+    writeJson(projetosPath, projetos);
+    res.status(201).json(novoProjeto);
 });
 
 router.put('/projetos/:id', (req, res) => {
-    const { pro_titulo, pro_descricao, pro_imagem, pro_link } = req.body;
-    db.query(
-        'UPDATE projetos SET pro_titulo = ?, pro_descricao = ?, pro_imagem = ?, pro_link = ? WHERE pro_id = ?',
-        [pro_titulo, pro_descricao, pro_imagem, pro_link, req.params.id],
-        (err) => {
-            if (err) return res.status(500).json({ erro: err });
-            res.json({ mensagem: 'Projeto atualizado' });
-        }
-    );
+    const projetos = readJson(projetosPath);
+    const idx = projetos.findIndex(p => p.id == req.params.id);
+    if (idx === -1) return res.status(404).json({ erro: 'Projeto não encontrado' });
+    projetos[idx] = { ...projetos[idx], ...req.body };
+    writeJson(projetosPath, projetos);
+    res.json(projetos[idx]);
 });
 
 router.delete('/projetos/:id', (req, res) => {
-    db.query('DELETE FROM projetos WHERE pro_id = ?', [req.params.id], (err) => {
-        if (err) return res.status(500).json({ erro: err });
-        res.json({ mensagem: 'Projeto excluído' });
-    });
+    let projetos = readJson(projetosPath);
+    const idx = projetos.findIndex(p => p.id == req.params.id);
+    if (idx === -1) return res.status(404).json({ erro: 'Projeto não encontrado' });
+    projetos.splice(idx, 1);
+    writeJson(projetosPath, projetos);
+    res.json({ mensagem: 'Projeto excluído' });
 });
 
 module.exports = router;

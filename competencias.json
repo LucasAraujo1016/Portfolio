@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1750539507557,
+    "frontEnd": [
+      "HTML",
+      "CSS",
+      "Tailwind",
+      "JavaScript",
+      "React",
+      "TypeScript"
+    ],
+    "backEnd": [
+      "Python",
+      "Node.js",
+      "Flask",
+      "MySQL"
+    ]
+  }
+]
