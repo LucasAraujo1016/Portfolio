@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 app.use('/api', apiRoutes);
-const port = 3000;
 
 /* const db = mysql.createConnection({
     host: 'localhost',
@@ -75,6 +74,8 @@ app.get('/projetos', (req, res) => {
     });
 });
 
+const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
-    console.log(`🚀 Servidor rodando em http://localhost:${port}`);
+    console.log(`🚀 Servidor rodando na porta ${port}`);
 });
