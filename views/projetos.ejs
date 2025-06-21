@@ -15,9 +15,22 @@
 
                 <% projetos.forEach(proj => { %>
                     <div class="api-1">
-                        <h2><%= proj.titulo %></h5>
+                        <h2><%= proj.titulo %></h2>
                         <p><%= proj.descricao %></p>
+                        <p><%= proj.contribuicao %></p>
                         <img class="img-fluid api1-img" src="/statics/imagens/<%= proj.imagem %>" alt="<%= proj.titulo %>">
+                        <% if (proj.tecnologias && proj.tecnologias.length > 0) { %>
+                            <div class="tecnologias">
+                                <strong>Tecnologias utilizadas:</strong>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 1rem;">
+                                    <% proj.tecnologias.forEach(function(tec) { %>
+                                        <div class="icons">
+                                            <img src="/statics/imagens/<%= tec.toLowerCase().replace('.', '').replace('#', 'sharp').replace(' ', '') %>.png" alt="<%= tec %>">
+                                        </div>
+                                    <% }) %>
+                                </div>
+                            </div>
+                        <% } %>
                         <button type="button" class="btn btn-primary btn-lg github-api1"
                             onclick="window.open('<%= proj.link %>', '_blank')">GitHub do projeto</button>
                     </div>

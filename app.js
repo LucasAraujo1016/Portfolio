@@ -9,17 +9,17 @@ app.use(bodyParser.json());
 app.use('/api', apiRoutes);
 const port = 3000;
 
-const db = mysql.createConnection({
+/* const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'fatec',
     database: 'portfolio'
-});
+}); */
 
-db.connect(err => {
+/* db.connect(err => {
     if (err) throw err;
     console.log('✅ Conexão com o banco de dados estabelecida com sucesso!');
-});
+}); */
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -34,7 +34,7 @@ const contatos = {
 
 const competencias = {
     frontEnd: ['HTML', 'CSS', 'Tailwind', 'JavaScript', 'React', 'TypeScript'],
-    backEnd: ['Python', 'Node.js', 'Flask', 'MySQL']
+    backEnd: ['Python', 'Nodejs', 'Flask', 'MySQL']
 };
 
 app.get('/', (req, res) => res.redirect('/sobre'));
@@ -52,16 +52,20 @@ app.get('/projetos', (req, res) => {
     const projetos = [
         {
             titulo: 'API 2º semestre/2024 - Acompanhamento dos Vereadores em SJC',
-            descricao: 'O projeto teve como objetivo desenvolver uma plataforma interativa para acompanhar o desempenho dos vereadores em exercício na cidade de São José dos Campos. A iniciativa surgiu da necessidade de aumentar a transparência e permitir que os cidadãos pudessem avaliar de forma clara e objetiva as atividades dos seus representantes. A plataforma possui uma seção dedicada a apresentar todos os vereadores, onde cada um tem uma página dedicada com mais informações, além de uma ferramenta que permite aos eleitores compararem o desempenho de diferentes vereadores. O projeto visou não apenas informar os cidadãos sobre o trabalho dos vereadores, mas também incentivá-los a participar mais ativamente da política local.',
+            descricao: 'O projeto teve como objetivo desenvolver uma plataforma interativa para acompanhar o desempenho dos vereadores em exercício na cidade de São José dos Campos. A iniciativa surgiu da necessidade de aumentar a transparência e permitir que os cidadãos avaliem de forma clara e objetiva as atividades dos seus representantes. A plataforma conta com uma seção dedicada à apresentação de todos os vereadores, oferecendo páginas individuais com informações detalhadas sobre cada um. Também foi implementada uma ferramenta de comparação de desempenho entre os vereadores, permitindo que os eleitores façam análises mais aprofundadas. Além disso, a plataforma inclui uma seção de comentários, incentivando os cidadãos a participarem ativamente da política local por meio de feedback e discussões públicas.',
+            contribuicao: 'Minha contribuição: Fui responsável pela criação da estrutura da página que exibe as informações de cada vereador, organizando os dados de forma clara e acessível. Também desenvolvi a seção de comentários, realizando a integração com o banco de dados para garantir o armazenamento e a exibição dinâmica das interações dos usuários.',
             imagem: 'API 1.png',
-            link: 'https://github.com/matheuskarnas/API-1?tab=readme-ov-file'
+            link: 'https://github.com/matheuskarnas/API-1?tab=readme-ov-file',
+            tecnologias: ['HTML', 'CSS', 'Tailwind', 'Python', 'Flask', 'MySQL']
         },
 
         {
             titulo: 'API 1º semestre/2025 - Dashboard web com dados do impacto',
             descricao: 'Desenvolvimento de um dashboard interativo e responsivo com o objetivo de monitorar os principais indicadores de desempenho e impacto da plataforma. Este painel foi idealizado para fornecer uma visão clara e em tempo real dos resultados alcançados, facilitando a tomada de decisões estratégicas por parte de patrocinadores, stakeholders e a equipe de produto.',
+            contribuicao: 'Minha contribuição: Nesse projeto, auxiliei na modelagem e criação do banco de dados que armazena os indicadores da plataforma. Além disso, fui responsável por desenvolver modais com gráficos interativos para cada card de informações dos patrocinadores, permitindo a visualização de dados filtrados por semana, mês, ano ou por um intervalo personalizado.',
             imagem: 'API-2.png',
-            link: 'https://github.com/matheuskarnas/API-2'
+            link: 'https://github.com/matheuskarnas/API-2',
+            tecnologias: ['Tailwind', 'JavaScript', 'React', 'TypeScript', 'Nodejs', 'MySQL']
         }
     ];
 

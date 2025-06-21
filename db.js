@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql2');
 
-const db = mysql.createConnection({
+/* const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'fatec',
     database: 'portfolio'
 });
-
+ */
 router.get('/usuarios', (req, res) => {
     db.query('SELECT * FROM usuario', (err, results) => {
         if (err) return res.status(500).json({ erro: err });
