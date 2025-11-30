@@ -33,7 +33,7 @@ const contatos = {
 
 const competencias = {
     frontEnd: ['HTML', 'CSS', 'Tailwind', 'JavaScript', 'React', 'TypeScript'],
-    backEnd: ['Python', 'Nodejs', 'Flask', 'MySQL']
+    backEnd: ['Python', 'Nodejs', 'Java', 'Flask', 'MySQL', 'MongoDB']
 };
 
 app.get('/', (req, res) => res.redirect('/sobre'));
@@ -65,6 +65,15 @@ app.get('/projetos', (req, res) => {
             imagem: 'API-2.png',
             link: 'https://github.com/matheuskarnas/API-2',
             tecnologias: ['Tailwind', 'JavaScript', 'React', 'TypeScript', 'Nodejs', 'MySQL']
+        },
+
+        {
+            titulo: "API 2º semestre/2025 - Sistema de gerenciamento de tarefas",
+            descricao: "O projeto consistiu no desenvolvimento da SideQuest, uma plataforma moderna e intuitiva criada para centralizar o gerenciamento de tarefas dentro de equipes. A iniciativa surgiu da necessidade de substituir processos descentralizados — como planilhas, anotações manuais e ferramentas pouco integradas — que dificultavam o acompanhamento de prazos, a priorização de atividades e a comunicação entre os membros.\nA plataforma foi idealizada para oferecer uma visão clara do andamento das tarefas, permitindo colaboração em tempo real e a possibilidade de anexar documentos diretamente às atividades. Com isso, o projeto buscou reduzir atrasos, evitar retrabalhos e aumentar a produtividade das equipes.",
+            contribuicao: "Nesse projeto, minha principal função foi atuar como Scrum Master, sendo responsável por acompanhar e ajustar o processo de trabalho da equipe. Além disso, também realizei ajustes em diversas páginas do sistema, tanto no front-end quanto no back-end.",
+            imagem: "API-3.png",
+            link: "https://github.com/Syntax-Fatec-SJC/SideQuest",
+            tecnologias: ['Tailwind', 'React', 'TypeScript', 'Java', 'MongoDB']
         }
     ];
 

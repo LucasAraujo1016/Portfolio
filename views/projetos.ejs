@@ -13,28 +13,30 @@
                 <h1>Projetos</h1>
                 <p>Nesta seção, você encontrará projetos que desenvolvi ao longo da minha trajetória. Cada projeto reflete minha paixão por inovação e aprendizado, abrangendo diversas áreas e tecnologias. Sinta-se à vontade para explorar e conhecer mais sobre cada um deles!</p>
 
-                <% projetos.forEach(proj => { %>
-                    <div class="api-1">
-                        <h2><%= proj.titulo %></h2>
-                        <p><%= proj.descricao %></p>
-                        <p><%= proj.contribuicao %></p>
-                        <img class="img-fluid api1-img" src="/statics/imagens/<%= proj.imagem %>" alt="<%= proj.titulo %>">
-                        <% if (proj.tecnologias && proj.tecnologias.length > 0) { %>
-                            <div class="tecnologias">
-                                <strong>Tecnologias utilizadas:</strong>
-                                <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 1rem;">
-                                    <% proj.tecnologias.forEach(function(tec) { %>
-                                        <div class="icons">
-                                            <img src="/statics/imagens/<%= tec.toLowerCase().replace('.', '').replace('#', 'sharp').replace(' ', '') %>.png" alt="<%= tec %>">
-                                        </div>
-                                    <% }) %>
+                <div class="projetos-lista">
+                    <% projetos.forEach(proj => { %>
+                        <div class="api-1">
+                            <h2><%= proj.titulo %></h2>
+                            <p><%= proj.descricao %></p>
+                            <p><%= proj.contribuicao %></p>
+                            <img class="img-fluid api1-img" src="/statics/imagens/<%= proj.imagem %>" alt="<%= proj.titulo %>">
+                            <% if (proj.tecnologias && proj.tecnologias.length > 0) { %>
+                                <div class="tecnologias">
+                                    <strong>Tecnologias utilizadas:</strong>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 1rem;">
+                                        <% proj.tecnologias.forEach(function(tec) { %>
+                                            <div class="icons">
+                                                <img src="/statics/imagens/<%= tec.toLowerCase().replace('.', '').replace('#', 'sharp').replace(' ', '') %>.png" alt="<%= tec %>">
+                                            </div>
+                                        <% }) %>
+                                    </div>
                                 </div>
-                            </div>
-                        <% } %>
-                        <button type="button" class="btn btn-primary btn-lg github-api1"
-                            onclick="window.open('<%= proj.link %>', '_blank')">GitHub do projeto</button>
-                    </div>
-                <% }) %>
+                            <% } %>
+                            <button type="button" class="btn btn-primary btn-lg github-api1"
+                                onclick="window.open('<%= proj.link %>', '_blank')">GitHub do projeto</button>
+                        </div>
+                    <% }) %>
+                </div>
             </section>
         </main>
 
