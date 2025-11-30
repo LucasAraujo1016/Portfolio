@@ -151,41 +151,109 @@ h1, h4, h5 {
     width: 50vw;
 }
 
+/* Grid para os projetos */
+.projetos-lista {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
 .api-1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;  
     color: #832232;  
+    background: #191d2b;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(131,34,50,0.15);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    max-width: 500px;
+    width: 90%;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1.5px solid #83223233;
+    min-width: 0;
+}
+
+.api1-img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 1100px) {
+    .projetos-lista {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .api-1 {
+        max-width: 95vw;
+        width: 100%;
+        padding: 1.5rem 0.5rem;
+    }
+    .api1-img {
+        max-width: 95vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .projetos-lista {
+        grid-template-columns: 1fr;
+    }
+    .api-1 {
+        max-width: 100%;
+    }
+}
+
+.api-1:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 8px 32px 0 rgba(131,34,50,0.25);
+    border-color: #832232;
+}
+
+.api-1 > h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-family: "Raleway", sans-serif;
+    letter-spacing: 1px;
 }
 
 .api-1 > p {
     text-align: center;
-    width: 75vw;
-}
-
-.api1-img {
-    width: 45vw;
-    border: solid;
-    border-color: #832232;
-    border-radius: 1rem;
+    width: 100%;
+    color: #e2e2e2;
+    margin-bottom: 1rem;
 }
 
 .github-api1 {
-    margin-top: 2%;
+    margin-top: 1rem;
     border-radius: 2rem;
-    width: 20vw;
-    height: 50px;
-    background-color: black;
-    border: solid;
-    font-size: large;
-    color: white;
-    border-color: white;
+    width: 60%;
+    min-width: 160px;
+    height: 45px;
+    background-color: #832232;
+    border: none;
+    font-size: 1.1rem;
+    color: #fff;
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px 0 rgba(131,34,50,0.10);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
-.github-api1:hover:hover {
-    background-color: black;
-    border-color: #832232;
+.github-api1:hover {
+    background-color: #fff;
+    color: #832232;
+    border: 2px solid #832232;
+    box-shadow: 0 4px 16px 0 rgba(131,34,50,0.18);
 }
 
 .contato {
@@ -265,4 +333,33 @@ h1, h4, h5 {
         width: 90%;
     }
 
+}
+
+@media (max-width: 600px) {
+    .projetos > p {
+        width: 95vw;
+        font-size: 1rem;
+    }
+    .api-1 {
+        padding: 1rem 0.2rem;
+        border-radius: 1rem;
+    }
+    .api1-img {
+        max-width: 90vw;
+    }
+    .github-api1 {
+        width: 90%;
+        min-width: unset;
+        font-size: 1rem;
+        height: 40px;
+    }
+    .projetos-lista {
+        gap: 1rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .api-1 > h2 {
+        font-size: 1.2rem;
+    }
 }

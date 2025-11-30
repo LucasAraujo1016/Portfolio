@@ -2,15 +2,22 @@
   {
     "id": 1750539140267,
     "titulo": "API 2º semestre/2024 - Acompanhamento dos Vereadores em SJC",
-    "descricao": "O projeto teve como objetivo desenvolver uma plataforma interativa para acompanhar o desempenho dos vereadores em exercício na cidade de São José dos Campos. A iniciativa surgiu da necessidade de aumentar a transparência e permitir que os cidadãos pudessem avaliar de forma clara e objetiva as atividades dos seus representantes. A plataforma possui uma seção dedicada a apresentar todos os vereadores, onde cada um tem uma página dedicada com mais informações, além de uma ferramenta que permite aos eleitores compararem o desempenho de diferentes vereadores. O projeto visou não apenas informar os cidadãos sobre o trabalho dos vereadores, mas também incentivá-los a participar mais ativamente da política local.",
+    "descricao": "O projeto teve como objetivo desenvolver uma plataforma interativa para acompanhar o desempenho dos vereadores em exercício na cidade de São José dos Campos. A iniciativa surgiu da necessidade de aumentar a transparência e permitir que os cidadãos avaliassem de forma clara e objetiva as atividades dos seus representantes.\nMeu papel nesse projeto foi criar a página com as informações dos candidatos, além de desenvolver uma seção de comentários para que os usuários pudessem compartilhar suas opiniões sobre o candidato selecionado.",
     "imagem": "API 1.png",
     "link": "https://github.com/matheuskarnas/API-1?tab=readme-ov-file"
   },
   {
     "id": 1750539258446,
     "titulo": "API 1º semestre/2025 - Dashboard web com dados do impacto",
-    "descricao": "Desenvolvimento de um dashboard interativo e responsivo com o objetivo de monitorar os principais indicadores de desempenho e impacto da plataforma. Este painel foi idealizado para fornecer uma visão clara e em tempo real dos resultados alcançados, facilitando a tomada de decisões estratégicas por parte de patrocinadores, stakeholders e a equipe de produto.",
+    "descricao":"Desenvolvimento de um dashboard interativo e responsivo com o objetivo de monitorar os principais indicadores de desempenho e impacto da plataforma. Este painel foi idealizado para fornecer uma visão clara e em tempo real dos resultados alcançados, facilitando a tomada de decisões estratégicas por patrocinadores, stakeholders e pela equipe de produto.\nMeu papel nesse projeto foi desenvolver tanto o design quanto as funcionalidades dos gráficos para cada métrica presente no dashboard, permitindo que os dados fossem filtrados por ano, mês, semana, dia ou de forma customizada.",  
     "imagem": "API-2.png",
     "link": "https://github.com/matheuskarnas/API-2"
+  },
+  {
+    "id": 1750539258447,
+    "titulo": "API 2º semestre/2025 - Sistema de gerenciamento de tarefas",
+    "descricao": "O projeto consistiu no desenvolvimento da SideQuest, uma plataforma moderna e intuitiva criada para centralizar o gerenciamento de tarefas dentro de equipes. A iniciativa surgiu da necessidade de substituir processos descentralizados — como planilhas, anotações manuais e ferramentas pouco integradas — que dificultavam o acompanhamento de prazos, a priorização de atividades e a comunicação entre os membros.\nA plataforma foi idealizada para oferecer uma visão clara do andamento das tarefas, permitindo colaboração em tempo real e a possibilidade de anexar documentos diretamente às atividades. Com isso, o projeto buscou reduzir atrasos, evitar retrabalhos e aumentar a produtividade das equipes.\nNesse projeto, minha principal função foi atuar como Scrum Master, sendo responsável por acompanhar e ajustar o processo de trabalho da equipe. Além disso, também realizei ajustes em diversas páginas do sistema, tanto no front-end quanto no back-end.",
+    "imagem": "API-3.png",
+    "link": "https://github.com/Syntax-Fatec-SJC/SideQuest"
   }
 ]
