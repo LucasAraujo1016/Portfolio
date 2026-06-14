@@ -14,9 +14,16 @@ const Sobre = () => {
               <h3 style={{ textAlign: 'center' }}>Desenvolvedor Full Stack</h3>
               <h5 className="card-title">Olá, muito prazer!</h5>
               <p className="card-text">
-                Atualmente, estou estudando Desenvolvimento de Software Multiplataforma na Fatec - SJC.
-                Busco sempre aprender novas tecnologias e aprimorar minhas habilidades.
-                Além da minha paixão por programação, sou um amante de jogos e de RPG de mesa.
+                Graduando em Desenvolvimento de Software Multiplataforma pela FATEC São José dos Campos.
+                Minha conexão com tecnologia começou na infância através dos videogames, mas foi no ensino
+                médio — influenciado por amigos da área — que decidi seguir essa carreira. Após uma breve
+                passagem por Engenharia da Computação, encontrei na FATEC o ambiente certo: aprendizado
+                prático, metodologia ágil Scrum e projetos reais com parceiros acadêmicos.
+                <br /><br />
+                Ao longo dos semestres, atuei tanto como desenvolvedor quanto como Scrum Master, o que
+                fortaleceu minhas habilidades técnicas e minha capacidade de comunicação e liderança.
+                Estou em busca de uma oportunidade de estágio para ingressar efetivamente no mercado e
+                aprender com problemas reais.
               </p>
             </div>
           </div>
